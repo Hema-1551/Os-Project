@@ -4,10 +4,10 @@ import Search from './Search';
 import Header from './Header';
 
 function Home(){
-
+    
     return (
         <>
-        <Header />
+        <Header home="active"/>
         <section>
         <div className="bus">
         </div>

@@ -1,6 +1,8 @@
 import Logo from './Logo';
+import {Link } from '@reach/router'
 
 const Header=(props)=>{
+
     return (
         <div className="header">
             <nav className="navbar navbar-expand-lg navbar-dark">
@@ -20,26 +22,30 @@ const Header=(props)=>{
               </button>
               <div className="collapse navbar-collapse" id="navbarText">
                 <ul className="navbar-nav ml-auto">
-                  <li className="nav-item active">
-                    <a className="nav-link" href=""
-                    >Home <span className="sr-only">(current)</span></a
-                    >
+                  <Link to="/">
+                  <li className={"nav-item " +props.home} >
+                    <label className="nav-link" >Home <span className="sr-only">(current)</span></label>
+                  </li>
+                  </Link>
+                  <li className="nav-item">
+                    <label className="nav-link">My Bookings</label>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="">My Bookings</a>
+                    <label className="nav-link" >Help</label>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="">Help</a>
+                    <label className="nav-link" >My Account</label>
                   </li>
-                  <li className="nav-item">
-                    <a className="nav-link" href="">My Account</a>
+                  <Link to="/SignIn" >
+                  <li className={"nav-item " +props.signin}>
+                    <label className="nav-link" >Login</label>
                   </li>
-                  <li className="nav-item">
-                    <a className="nav-link" href="">Login</a>
+                  </Link>
+                  <Link to="/SignUp" >
+                  <li className={"nav-item " +props.signup}>
+                    <label className="nav-link" >Signup</label>
                   </li>
-                  <li className="nav-item">
-                    <a className="nav-link" href="">Signup</a>
-                  </li>
+                  </Link>
                 </ul>
                 <div></div>
               </div>

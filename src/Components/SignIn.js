@@ -1,6 +1,7 @@
 import  React, {useState} from 'react';
 
 import { Link } from '@reach/router';
+import Header from './Header';
 
 const SignIn = () => {
 
@@ -32,6 +33,8 @@ const SignIn = () => {
 
 
     return (
+        <>
+        <Header signin="active"/>
         <div className="mt-8">
       <h1 className="text-3xl mb-2 text-center font-bold">Sign In</h1>
       <div className="border border-blue-400 mx-auto w-11/12 md:w-2/4 rounded py-8 px-4 md:px-8">
@@ -72,16 +75,17 @@ const SignIn = () => {
         </button>
         <p className="text-center my-3">
           Don't have an account?{" "}
-          <Link to="SignUp" className="text-blue-500 hover:text-blue-600">
+          <Link to="/SignUp" className="text-white-500 hover:text-blue-600">
             Sign up here
           </Link>{" "}
           <br />{" "}
-          <Link to = "passwordReset" className="text-blue-500 hover:text-blue-600">
+          <Link to = "/passwordReset" className="text-white-500 hover:text-blue-600">
             Forgot Password?
           </Link>
         </p>
       </div>
     </div>
+    </>
     );
 
 }
