@@ -1,15 +1,14 @@
-import react from 'react';
 import Logo from './Logo';
 
 const Header=(props)=>{
     return (
         <div className="header">
-            <nav class="navbar navbar-expand-lg">
-              <a class="navbar-brand" href="#">
-              <Logo/>
+            <nav className="navbar navbar-expand-lg navbar-dark">
+              <a className="navbar-brand" href="">
+              <Logo />
               </a>
               <button
-                class="navbar-toggler"
+                className="navbar-toggler"
                 type="button"
                 data-toggle="collapse"
                 data-target="#navbarText"
@@ -17,23 +16,29 @@ const Header=(props)=>{
                 aria-expanded="false"
                 aria-label="Toggle navigation"
               >
-                <span class="navbar-toggler-icon"></span>
+                <span className="navbar-toggler-icon"></span>
               </button>
-              <div class="collapse navbar-collapse" id="navbarText">
-                <ul class="navbar-nav ml-auto mr-auto">
-                  <li class="nav-item active">
-                    <a class="nav-link" href="#"
-                    >Home <span class="sr-only">(current)</span></a
+              <div className="collapse navbar-collapse" id="navbarText">
+                <ul className="navbar-nav ml-auto">
+                  <li className="nav-item active">
+                    <a className="nav-link" href=""
+                    >Home <span className="sr-only">(current)</span></a
                     >
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">My Bookings</a>
+                  <li className="nav-item">
+                    <a className="nav-link" href="">My Bookings</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Help</a>
+                  <li className="nav-item">
+                    <a className="nav-link" href="">Help</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">My Account</a>
+                  <li className="nav-item">
+                    <a className="nav-link" href="">My Account</a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="">Login</a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="">Signup</a>
                   </li>
                 </ul>
                 <div></div>

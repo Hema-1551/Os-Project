@@ -1,5 +1,5 @@
-.toAndfrom {
-  background-image: url("./images/bus1.jpeg");
+.bus{
+  background-image: url("../images/bus1.jpeg");
   /* margin: auto; */
   background-repeat: no-repeat;
   background-position: center center;
