@@ -2,16 +2,27 @@ import  React, {useState} from 'react';
 
 import { Link } from '@reach/router';
 import Header from './Header';
+import { signInWithGoogle, auth } from '../firebase/fire';
 
 const SignIn = () => {
 
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
-    const [diaplayName,setDisplayName] = useState('');
+    const [displayName,setDisplayName] = useState('');
     const [error,setError] = useState(null);
 
-    const signInWithEmailAndPasswordHandler = (event,email,password) => {
+    const signInWithEmailAndPasswordHandler = 
+    (event,email,password) => {
         event.preventDefault();
+        
+        auth.signInWithEmailAndPassword(email,password).then(()=>{
+          window.location.href="http://localhost:3000/"
+        })
+        .catch(error => {
+            setError("Error signing in with email and password!");
+            console.log("eror signing in with email and password",error)
+        })
+
         setEmail("");
         setPassword("");
         setDisplayName("");
@@ -48,7 +59,7 @@ const SignIn = () => {
             className="my-1 p-1 w-full"
             name="userEmail"
             value = {email}
-            placeholder="E.g: faruq123@gmail.com"
+            placeholder="E.g: dexter@gmail.com"
             id="userEmail"
             onChange = {(event) => onChangeHandler(event)}
           />
@@ -69,10 +80,7 @@ const SignIn = () => {
           </button>
         </form>
         <p className="text-center my-3">or</p>
-        <button
-          className="bg-red-500 hover:bg-red-600 w-full py-2 text-white">
-          Sign in with Google
-        </button>
+       
         <p className="text-center my-3">
           Don't have an account?{" "}
           <Link to="/SignUp" className="text-white-500 hover:text-blue-600">

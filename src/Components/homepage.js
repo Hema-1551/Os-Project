@@ -1,7 +1,7 @@
 import React from 'react';
 import '../css/home.css';
-import Search from './Search';
 import Header from './Header';
+import RoutesList from './RoutesList';
 
 function Home(){
     
@@ -9,10 +9,8 @@ function Home(){
         <>
         <Header home="active"/>
         <section>
-        <div className="bus">
-        </div>
-       <Search placeholder="From Location" />
-       <Search placeholder="To Location" />
+        <div className="bus" />
+       <RoutesList />
       </section>
       </>
     );

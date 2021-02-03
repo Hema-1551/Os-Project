@@ -1,8 +1,13 @@
 import Logo from './Logo';
 import {Link } from '@reach/router'
+import React , { useContext } from 'react';
+import { UserContext } from '../providers/UserProvider'
+import {signOut} from '../firebase/fire'
 
 const Header=(props)=>{
 
+    const user = useContext(UserContext);
+    console.log(user);
     return (
         <div className="header">
             <nav className="navbar navbar-expand-lg navbar-dark">
@@ -27,25 +32,44 @@ const Header=(props)=>{
                     <label className="nav-link" >Home <span className="sr-only">(current)</span></label>
                   </li>
                   </Link>
-                  <li className="nav-item">
-                    <label className="nav-link">My Bookings</label>
-                  </li>
+                 {
+                   (user) &&
+                   <li className="nav-item">
+                   <label className="nav-link">My Bookings</label>
+                   </li>
+                 }
                   <li className="nav-item">
                     <label className="nav-link" >Help</label>
                   </li>
-                  <li className="nav-item">
-                    <label className="nav-link" >My Account</label>
-                  </li>
-                  <Link to="/SignIn" >
+                  {
+                    !user &&
+                    <Link to="/SignIn" >
                   <li className={"nav-item " +props.signin}>
                     <label className="nav-link" >Login</label>
                   </li>
                   </Link>
-                  <Link to="/SignUp" >
-                  <li className={"nav-item " +props.signup}>
-                    <label className="nav-link" >Signup</label>
-                  </li>
-                  </Link>
+                  }
+                      {
+                        (!user) &&
+                        <Link to="/SignUp" >
+                         <li className={"nav-item " +props.signup}>
+                        <label className="nav-link" >Signup</label>
+                         </li>
+                         </Link>
+                     }
+                  {
+                    (user) &&
+                    <li className="nav-item ">
+                    <label className="nav-link" >{ (user.data) && user.data.displayName}</label>
+                    </li>
+                  }
+                  {
+                    (user) &&
+                    <li className="nav-item" onClick={signOut}>
+                    <label className="nav-link" >Logout</label>
+                     </li>
+                  }
+                  
                 </ul>
                 <div></div>
               </div>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from '@reach/router';
 import Header from './Header';
+import { auth, createUser } from '../firebase/fire';
 
 const SignUp = () => {
 
@@ -9,8 +10,23 @@ const SignUp = () => {
   const [displayName, setDisplayName] = useState("");
   const [error, setError] = useState(null);
 
-  const createUserWithEmailAndPasswordHandler = (event, email, password) => {
+  const createUserWithEmailAndPasswordHandler = async (event, email, password) => {
     event.preventDefault();
+
+   
+     await auth.createUserWithEmailAndPassword(email, password)
+     .then((response)=>{
+       console.log("user uid ----> ",response.user)
+       createUser(response.user,displayName).then(() => {
+
+        window.location.href="http://localhost:3000/"
+
+       })
+     }).catch(error=>{
+      setError('error signing up with email and password');
+      console.log(error,"sing up error")
+     })
+   
     setEmail("");
     setPassword("");
     setDisplayName("");
@@ -85,11 +101,6 @@ const SignUp = () => {
           </button>
         </form>
         <p className="text-center my-3">or</p>
-        <button
-          className="bg-red-500 hover:bg-red-600 w-full py-2 text-white"
-        >
-          Sign In with Google
-        </button>
         <p className="text-center my-3">
           Already have an account?{" "}
           <Link to="/SignIn" className="text-white-500 hover:text-orange-600">
