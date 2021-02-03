@@ -51,7 +51,7 @@ import {db,auth} from '../firebase/fire'
                      {
                         db.ref('Customers').child(usr.uid).child('My_Bookings').
                          update(bookObject).then(()=>{
-                            window.location.href="http://locahost:3000/"
+                            window.location.href="https://flutter-firebase-learnin-f2cae.web.app/"
                          })
                      }
                  })

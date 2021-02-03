@@ -21,13 +21,13 @@ firebase.initializeApp(firebaseConfig);
 
   export const signInWithGoogle = () => {
     auth.signInWithPopup(provider).then(()=>{
-      window.location.href = "http://localhost:3000/"
+      window.location.href = "https://flutter-firebase-learnin-f2cae.web.app/"
     });
   };
 
   export const signOut = () => {
     auth.signOut().then(()=>{
-      window.location.href="http://localhost:3000/"
+      window.location.href="https://flutter-firebase-learnin-f2cae.web.app/"
     });
   }
 
