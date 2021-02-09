@@ -12,8 +12,6 @@ class BusesList extends React.Component {
      }
 
      render (){
-              console.log(this.props.buses,"from busesList");
-              console.log(this.props.to,this.props.from,'from rebeca')
              const busesArray = [];
               (this.props.buses) && Object.keys(this.state.buses).forEach(key=>{
                            busesArray.push(this.props.buses[key])

@@ -2,7 +2,7 @@ import {Link, Redirect } from '@reach/router'
 import React , { useContext, useState } from 'react';
 import { UserContext } from '../providers/UserProvider'
 import '../css/booking.css'
-import {db,auth} from '../firebase/fire'
+import {db,auth, followFIFO} from '../firebase/fire'
 
  const Booking = (props) => {
         const [address, setAddress] = useState("");
@@ -49,10 +49,12 @@ import {db,auth} from '../firebase/fire'
                  auth.onAuthStateChanged((usr)=>{
                      if(usr)
                      {
-                        db.ref('Customers').child(usr.uid).child('My_Bookings').
-                         update(bookObject).then(()=>{
-                            window.location.href="https://flutter-firebase-learnin-f2cae.web.app/"
-                         })
+                         if(followFIFO(usr)){
+                            db.ref('Customers').child(usr.uid).child('My_Bookings').
+                            update(bookObject).then(()=>{
+                               window.location.href="https://flutter-firebase-learnin-f2cae.web.app/"
+                            })
+                         }
                      }
                  })
             }

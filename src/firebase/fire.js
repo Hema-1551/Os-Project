@@ -98,3 +98,24 @@ export const getRoutes = async (type,place) => {
      })
      return res;
 }
+
+
+export const followFIFO = (currentUser) => {
+    db.ref('Customers').on('value',user=>{
+      if(snap.exists)
+      {
+        snap.forEach(user=>{
+          if(!(currentUser.data.checkIn > user.data.checkIn))
+          {
+            return true;
+          }
+          else
+          {
+            //current user is trying to book bus without fifo
+            return false;
+          }
+        })
+      }
+    })
+}
+
